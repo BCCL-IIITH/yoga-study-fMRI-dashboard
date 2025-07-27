@@ -1,0 +1,768 @@
+
+    <html>
+    <head>
+        <style>
+            body { font-family: Arial, sans-serif; padding: 20px; }
+            h1 { border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+            .accordion {
+                background-color: #f1f1f1;
+                color: #444;
+                cursor: pointer;
+                padding: 10px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                font-size: 16px;
+                transition: 0.2s;
+                margin-top: 5px;
+            }
+            .accordion.active, .accordion:hover {
+                background-color: #ddd;
+            }
+            .panel {
+                padding: 0 10px;
+                display: none;
+                overflow: hidden;
+                background-color: #f9f9f9;
+                border-left: 2px solid #ddd;
+                border-right: 2px solid #ddd;
+                border-bottom: 2px solid #ddd;
+                margin-bottom: 10px;
+            }
+            .tab button {
+                background-color: #eee;
+                border: none;
+                padding: 8px 12px;
+                cursor: pointer;
+                font-size: 14px;
+            }
+            .tab button.active {
+                background-color: #666;
+                color: white;
+            }
+            .tabcontent {
+                display: none;
+                padding: 10px;
+            }
+            img { margin: 10px 0; border: 1px solid #ccc; max-width: 98%; }
+            table { border-collapse: collapse; margin-top: 10px; }
+            th, td { padding: 4px 10px; border: 1px solid #aaa; }
+            .fallback-label { color: #c00; font-weight: bold; font-size: 90%; margin-left: 10px; }
+        </style>
+        <script>
+            function toggleAccordion(el) {
+                el.classList.toggle("active");
+                var panel = el.nextElementSibling;
+                panel.style.display = (panel.style.display === "block") ? "none" : "block";
+            }
+
+            function openTab(evt, sub, tabName) {
+                var content = document.querySelectorAll(".tabcontent");
+                content.forEach(e => e.style.display = "none");
+                var buttons = document.querySelectorAll(".tab button");
+                buttons.forEach(b => b.classList.remove("active"));
+                document.getElementById(sub + "_" + tabName).style.display = "block";
+                evt.currentTarget.classList.add("active");
+            }
+
+            document.addEventListener("DOMContentLoaded", () => {
+                let firstPanel = document.querySelector(".accordion");
+                if (firstPanel) {
+                    firstPanel.click(); // Expand first subject
+                }
+            });
+        </script>
+    </head>
+    <body>
+    <a class="button" href="../index.html" style="float:right">← Home</a>
+    <h1>fMRI Denoising QC Report</h1>
+    <button class='accordion' onclick='toggleAccordion(this)'>sub-0001 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0001', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0001', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0001_cleaned" class="tabcontent">
+        <img src="sub-0001/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0001/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0001_confounds" class="tabcontent">
+<img src="sub-0001/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0001/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>17</td></tr><tr><td>Outlier regressors (ART)</td><td>1</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>32</td></tr></table><h4>Confound Composition</h4><img src="sub-0001/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0001/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0001/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0001/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0002 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0002', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0002', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0002_cleaned" class="tabcontent">
+        <img src="sub-0002/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0002/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0002_confounds" class="tabcontent">
+<img src="sub-0002/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0002/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>11</td></tr><tr><td>Outlier regressors (ART)</td><td>3</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>28</td></tr></table><h4>Confound Composition</h4><img src="sub-0002/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0002/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0002/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0002/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0003 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0003', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0003', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0003_cleaned" class="tabcontent">
+        <img src="sub-0003/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0003/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0003_confounds" class="tabcontent">
+<img src="sub-0003/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0003/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>16</td></tr><tr><td>Outlier regressors (ART)</td><td>7</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>37</td></tr></table><h4>Confound Composition</h4><img src="sub-0003/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0003/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0003/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0003/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0004 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0004', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0004', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0004_cleaned" class="tabcontent">
+        <img src="sub-0004/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0004/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0004_confounds" class="tabcontent">
+<img src="sub-0004/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0004/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>14</td></tr><tr><td>Outlier regressors (ART)</td><td>4</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>32</td></tr></table><h4>Confound Composition</h4><img src="sub-0004/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0004/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0004/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0004/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0005 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0005', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0005', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0005_cleaned" class="tabcontent">
+        <img src="sub-0005/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0005/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0005_confounds" class="tabcontent">
+<img src="sub-0005/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0005/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>13</td></tr><tr><td>Outlier regressors (ART)</td><td>1</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>28</td></tr></table><h4>Confound Composition</h4><img src="sub-0005/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0005/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0005/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0005/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0006 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0006', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0006', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0006_cleaned" class="tabcontent">
+        <img src="sub-0006/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0006/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0006_confounds" class="tabcontent">
+<img src="sub-0006/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0006/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>14</td></tr><tr><td>Outlier regressors (ART)</td><td>1</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>29</td></tr></table><h4>Confound Composition</h4><img src="sub-0006/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0006/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0006/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0006/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0007 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0007', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0007', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0007_cleaned" class="tabcontent">
+        <img src="sub-0007/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0007/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0007_confounds" class="tabcontent">
+<img src="sub-0007/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0007/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>13</td></tr><tr><td>Outlier regressors (ART)</td><td>2</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>29</td></tr></table><h4>Confound Composition</h4><img src="sub-0007/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0007/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0007/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0007/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0008 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0008', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0008', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0008_cleaned" class="tabcontent">
+        <img src="sub-0008/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0008/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0008_confounds" class="tabcontent">
+<img src="sub-0008/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0008/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>15</td></tr><tr><td>Outlier regressors (ART)</td><td>19</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>48</td></tr></table><h4>Confound Composition</h4><img src="sub-0008/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0008/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0008/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0008/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0009 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0009', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0009', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0009_cleaned" class="tabcontent">
+        <img src="sub-0009/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0009/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0009_confounds" class="tabcontent">
+<img src="sub-0009/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0009/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>11</td></tr><tr><td>Outlier regressors (ART)</td><td>30</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>55</td></tr></table><h4>Confound Composition</h4><img src="sub-0009/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0009/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0009/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0009/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0010 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0010', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0010', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0010_cleaned" class="tabcontent">
+        <img src="sub-0010/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0010/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0010_confounds" class="tabcontent">
+<img src="sub-0010/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0010/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>13</td></tr><tr><td>Outlier regressors (ART)</td><td>8</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>35</td></tr></table><h4>Confound Composition</h4><img src="sub-0010/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0010/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0010/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0010/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0011 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0011', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0011', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0011_cleaned" class="tabcontent">
+        <img src="sub-0011/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0011/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0011_confounds" class="tabcontent">
+<img src="sub-0011/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0011/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>14</td></tr><tr><td>Outlier regressors (ART)</td><td>0</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>28</td></tr></table><h4>Confound Composition</h4><img src="sub-0011/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0011/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0011/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0011/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0012 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0012', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0012', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0012_cleaned" class="tabcontent">
+        <img src="sub-0012/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0012/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0012_confounds" class="tabcontent">
+<img src="sub-0012/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0012/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>15</td></tr><tr><td>Outlier regressors (ART)</td><td>4</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>33</td></tr></table><h4>Confound Composition</h4><img src="sub-0012/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0012/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0012/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0012/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0013 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0013', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0013', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0013_cleaned" class="tabcontent">
+        <img src="sub-0013/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0013/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0013_confounds" class="tabcontent">
+<img src="sub-0013/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0013/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>15</td></tr><tr><td>Outlier regressors (ART)</td><td>1</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>30</td></tr></table><h4>Confound Composition</h4><img src="sub-0013/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0013/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0013/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0013/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0014 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0014', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0014', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0014_cleaned" class="tabcontent">
+        <img src="sub-0014/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0014/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0014_confounds" class="tabcontent">
+<img src="sub-0014/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0014/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>15</td></tr><tr><td>Outlier regressors (ART)</td><td>3</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>32</td></tr></table><h4>Confound Composition</h4><img src="sub-0014/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0014/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0014/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0014/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0015 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0015', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0015', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0015_cleaned" class="tabcontent">
+        <img src="sub-0015/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0015/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0015_confounds" class="tabcontent">
+<img src="sub-0015/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0015/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>14</td></tr><tr><td>Outlier regressors (ART)</td><td>1</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>29</td></tr></table><h4>Confound Composition</h4><img src="sub-0015/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0015/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0015/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0015/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0016 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0016', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0016', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0016_cleaned" class="tabcontent">
+        <img src="sub-0016/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0016/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0016_confounds" class="tabcontent">
+<img src="sub-0016/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0016/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>16</td></tr><tr><td>Outlier regressors (ART)</td><td>18</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>48</td></tr></table><h4>Confound Composition</h4><img src="sub-0016/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0016/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0016/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0016/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0017 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0017', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0017', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0017_cleaned" class="tabcontent">
+        <img src="sub-0017/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0017/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0017_confounds" class="tabcontent">
+<img src="sub-0017/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0017/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>16</td></tr><tr><td>Outlier regressors (ART)</td><td>0</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>30</td></tr></table><h4>Confound Composition</h4><img src="sub-0017/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0017/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0017/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0017/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0018 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0018', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0018', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0018_cleaned" class="tabcontent">
+        <img src="sub-0018/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0018/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0018_confounds" class="tabcontent">
+<img src="sub-0018/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0018/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>20</td></tr><tr><td>Outlier regressors (ART)</td><td>1</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>35</td></tr></table><h4>Confound Composition</h4><img src="sub-0018/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0018/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0018/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0018/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0019 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0019', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0019', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0019_cleaned" class="tabcontent">
+        <img src="sub-0019/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0019/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0019_confounds" class="tabcontent">
+<img src="sub-0019/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0019/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>16</td></tr><tr><td>Outlier regressors (ART)</td><td>0</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>30</td></tr></table><h4>Confound Composition</h4><img src="sub-0019/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0019/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0019/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0019/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0020 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0020', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0020', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0020_cleaned" class="tabcontent">
+        <img src="sub-0020/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0020/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0020_confounds" class="tabcontent">
+<img src="sub-0020/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0020/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>13</td></tr><tr><td>Outlier regressors (ART)</td><td>18</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>45</td></tr></table><h4>Confound Composition</h4><img src="sub-0020/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0020/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0020/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0020/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0021 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0021', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0021', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0021_cleaned" class="tabcontent">
+        <img src="sub-0021/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0021/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0021_confounds" class="tabcontent">
+<img src="sub-0021/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0021/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>15</td></tr><tr><td>Outlier regressors (ART)</td><td>6</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>35</td></tr></table><h4>Confound Composition</h4><img src="sub-0021/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0021/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0021/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0021/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0022 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0022', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0022', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0022_cleaned" class="tabcontent">
+        <img src="sub-0022/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0022/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0022_confounds" class="tabcontent">
+<img src="sub-0022/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0022/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>13</td></tr><tr><td>Outlier regressors (ART)</td><td>4</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>31</td></tr></table><h4>Confound Composition</h4><img src="sub-0022/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0022/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0022/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0022/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0023 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0023', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0023', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0023_cleaned" class="tabcontent">
+        <img src="sub-0023/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0023/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0023_confounds" class="tabcontent">
+<img src="sub-0023/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0023/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>15</td></tr><tr><td>Outlier regressors (ART)</td><td>2</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>31</td></tr></table><h4>Confound Composition</h4><img src="sub-0023/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0023/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0023/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0023/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0024 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0024', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0024', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0024_cleaned" class="tabcontent">
+        <img src="sub-0024/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0024/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0024_confounds" class="tabcontent">
+<img src="sub-0024/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0024/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>14</td></tr><tr><td>Outlier regressors (ART)</td><td>6</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>34</td></tr></table><h4>Confound Composition</h4><img src="sub-0024/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0024/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0024/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0024/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0025 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0025', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0025', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0025_cleaned" class="tabcontent">
+        <img src="sub-0025/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0025/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0025_confounds" class="tabcontent">
+<img src="sub-0025/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0025/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>12</td></tr><tr><td>Outlier regressors (ART)</td><td>30</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>56</td></tr></table><h4>Confound Composition</h4><img src="sub-0025/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0025/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0025/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0025/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0026 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0026', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0026', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0026_cleaned" class="tabcontent">
+        <img src="sub-0026/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0026/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0026_confounds" class="tabcontent">
+<img src="sub-0026/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0026/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>12</td></tr><tr><td>Outlier regressors (ART)</td><td>2</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>28</td></tr></table><h4>Confound Composition</h4><img src="sub-0026/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0026/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0026/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0026/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0027 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0027', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0027', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0027_cleaned" class="tabcontent">
+        <img src="sub-0027/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0027/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0027_confounds" class="tabcontent">
+<img src="sub-0027/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0027/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>15</td></tr><tr><td>Outlier regressors (ART)</td><td>17</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>46</td></tr></table><h4>Confound Composition</h4><img src="sub-0027/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0027/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0027/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0027/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0028 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0028', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0028', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0028_cleaned" class="tabcontent">
+        <img src="sub-0028/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0028/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0028_confounds" class="tabcontent">
+<img src="sub-0028/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0028/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>14</td></tr><tr><td>Outlier regressors (ART)</td><td>1</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>29</td></tr></table><h4>Confound Composition</h4><img src="sub-0028/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0028/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0028/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0028/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0029 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0029', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0029', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0029_cleaned" class="tabcontent">
+        <img src="sub-0029/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0029/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0029_confounds" class="tabcontent">
+<img src="sub-0029/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0029/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>14</td></tr><tr><td>Outlier regressors (ART)</td><td>1</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>29</td></tr></table><h4>Confound Composition</h4><img src="sub-0029/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0029/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0029/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0029/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0030 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0030', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0030', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0030_cleaned" class="tabcontent">
+        <img src="sub-0030/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0030/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0030_confounds" class="tabcontent">
+<img src="sub-0030/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0030/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>17</td></tr><tr><td>Outlier regressors (ART)</td><td>0</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>31</td></tr></table><h4>Confound Composition</h4><img src="sub-0030/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0030/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0030/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0030/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0031 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0031', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0031', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0031_cleaned" class="tabcontent">
+        <img src="sub-0031/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0031/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0031_confounds" class="tabcontent">
+<img src="sub-0031/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0031/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>15</td></tr><tr><td>Outlier regressors (ART)</td><td>4</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>33</td></tr></table><h4>Confound Composition</h4><img src="sub-0031/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0031/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0031/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0031/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0032 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0032', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0032', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0032_cleaned" class="tabcontent">
+        <img src="sub-0032/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0032/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0032_confounds" class="tabcontent">
+<img src="sub-0032/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0032/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>17</td></tr><tr><td>Outlier regressors (ART)</td><td>0</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>31</td></tr></table><h4>Confound Composition</h4><img src="sub-0032/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0032/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0032/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0032/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0033 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0033', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0033', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0033_cleaned" class="tabcontent">
+        <img src="sub-0033/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0033/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0033_confounds" class="tabcontent">
+<img src="sub-0033/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0033/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>17</td></tr><tr><td>Outlier regressors (ART)</td><td>0</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>31</td></tr></table><h4>Confound Composition</h4><img src="sub-0033/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0033/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0033/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0033/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0034 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0034', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0034', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0034_cleaned" class="tabcontent">
+        <img src="sub-0034/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0034/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0034_confounds" class="tabcontent">
+<img src="sub-0034/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0034/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>16</td></tr><tr><td>Outlier regressors (ART)</td><td>2</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>32</td></tr></table><h4>Confound Composition</h4><img src="sub-0034/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0034/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0034/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0034/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0035 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0035', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0035', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0035_cleaned" class="tabcontent">
+        <img src="sub-0035/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0035/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0035_confounds" class="tabcontent">
+<img src="sub-0035/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0035/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>14</td></tr><tr><td>Outlier regressors (ART)</td><td>1</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>29</td></tr></table><h4>Confound Composition</h4><img src="sub-0035/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0035/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0035/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0035/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0036 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0036', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0036', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0036_cleaned" class="tabcontent">
+        <img src="sub-0036/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0036/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0036_confounds" class="tabcontent">
+<img src="sub-0036/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0036/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>12</td></tr><tr><td>Outlier regressors (ART)</td><td>30</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>56</td></tr></table><h4>Confound Composition</h4><img src="sub-0036/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0036/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0036/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0036/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0037 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0037', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0037', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0037_cleaned" class="tabcontent">
+        <img src="sub-0037/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0037/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0037_confounds" class="tabcontent">
+<img src="sub-0037/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0037/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>17</td></tr><tr><td>Outlier regressors (ART)</td><td>4</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>35</td></tr></table><h4>Confound Composition</h4><img src="sub-0037/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0037/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0037/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0037/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0038 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0038', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0038', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0038_cleaned" class="tabcontent">
+        <img src="sub-0038/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0038/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0038_confounds" class="tabcontent">
+<img src="sub-0038/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0038/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>12</td></tr><tr><td>Outlier regressors (ART)</td><td>2</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>28</td></tr></table><h4>Confound Composition</h4><img src="sub-0038/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0038/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0038/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0038/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0039 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0039', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0039', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0039_cleaned" class="tabcontent">
+        <img src="sub-0039/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0039/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0039_confounds" class="tabcontent">
+<img src="sub-0039/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0039/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>12</td></tr><tr><td>Outlier regressors (ART)</td><td>14</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>40</td></tr></table><h4>Confound Composition</h4><img src="sub-0039/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0039/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0039/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0039/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0040 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0040', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0040', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0040_cleaned" class="tabcontent">
+        <img src="sub-0040/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0040/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0040_confounds" class="tabcontent">
+<img src="sub-0040/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0040/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>16</td></tr><tr><td>Outlier regressors (ART)</td><td>0</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>30</td></tr></table><h4>Confound Composition</h4><img src="sub-0040/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0040/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0040/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0040/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0041 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0041', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0041', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0041_cleaned" class="tabcontent">
+        <img src="sub-0041/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0041/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0041_confounds" class="tabcontent">
+<img src="sub-0041/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0041/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>15</td></tr><tr><td>Outlier regressors (ART)</td><td>5</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>34</td></tr></table><h4>Confound Composition</h4><img src="sub-0041/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0041/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0041/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0041/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0042 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0042', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0042', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0042_cleaned" class="tabcontent">
+        <img src="sub-0042/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0042/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0042_confounds" class="tabcontent">
+<img src="sub-0042/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0042/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>12</td></tr><tr><td>Outlier regressors (ART)</td><td>30</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>56</td></tr></table><h4>Confound Composition</h4><img src="sub-0042/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0042/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0042/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0042/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div><button class='accordion' onclick='toggleAccordion(this)'>sub-0043 </button><div class='panel'>
+            <div class="tab">
+                <button class="tablink" onclick="openTab(event, 'sub-0043', 'cleaned')">Cleaned</button>
+                <button class="tablink" onclick="openTab(event, 'sub-0043', 'confounds')">Confounds</button>
+            </div>
+            <div id="sub-0043_cleaned" class="tabcontent">
+        <img src="sub-0043/qc/cleaned/global_signal_comparison.png" alt="global_signal_comparison.png">
+<img src="sub-0043/qc/cleaned/voxel_timeseries_comparison.png" alt="voxel_timeseries_comparison.png">
+</div>
+<div id="sub-0043_confounds" class="tabcontent">
+<img src="sub-0043/qc/confounds/fd_dvars_outliers.png" alt="fd_dvars_outliers.png">
+<img src="sub-0043/qc/confounds/motion_interpolation.png" alt="motion_interpolation.png">
+<h4>Confound Regressors Used:</h4><table><tr><th>Category</th><th>Count</th></tr><tr><td>Motion (6)</td><td>6</td></tr><tr><td>Motion Derivatives (6)</td><td>6</td></tr><tr><td>CompCor (WM+CSF)</td><td>18</td></tr><tr><td>Outlier regressors (ART)</td><td>9</td></tr><tr><td>Session trends (cosine)</td><td>2</td></tr><tr><td>Total</td><td>41</td></tr></table><h4>Confound Composition</h4><img src="sub-0043/qc/confounds/confound_pie.png" alt="Pie Chart">
+<h4>Compcor Wm</h4><img src="sub-0043/qc/confounds/compcor_wm.png" alt="compcor_wm.png">
+<h4>Compcor Csf</h4><img src="sub-0043/qc/confounds/compcor_csf.png" alt="compcor_csf.png">
+<h4>Confound Heatmap</h4><img src="sub-0043/qc/confounds/used_confounds_heatmap.png" alt="Heatmap">
+</div></div></body></html>

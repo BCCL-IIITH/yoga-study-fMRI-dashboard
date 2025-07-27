@@ -1,0 +1,7 @@
+Category,Count
+Motion (6),6
+Motion Derivatives (6),6
+CompCor (WM+CSF),16
+Outlier regressors (ART),2
+Session trends (cosine),2
+Total,32
