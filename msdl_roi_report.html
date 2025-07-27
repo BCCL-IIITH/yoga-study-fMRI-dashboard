@@ -1,0 +1,109 @@
+
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 1000px; margin: auto; }
+        h1 { color: #333; }
+        h2 { color: #444; margin-top: 40px; }
+        ul { margin-top: 5px; }
+        img { border: 1px solid #ccc; margin-top: 10px; max-width: 100%; height: auto; }
+        .network-block { margin-bottom: 50px; }
+        .subtitle { font-style: italic; color: #666; }
+    </style>
+</head>
+<body>
+<a class="button" href="index.html" style="float:right">← Home</a>
+<h1>MSDL Atlas Network ROI Report</h1>
+
+<p>This report summarizes the 8 large-scale brain networks extracted from the <strong>MSDL Atlas</strong> via <code>nilearn.datasets.fetch_atlas_msdl()</code>. Each network is defined by combining multiple MSDL components (by label keywords). ROI masks were averaged and binarized for use in SBC.</p>
+<hr>
+<div class='network-block'>
+<h2>Cerebellum</h2>
+<div class='subtitle'>MSDL components used:</div>
+<ul>
+<li>Cereb</li>
+</ul>
+<img src='msdl_network_rois/Cerebellum.png' alt='ROI: Cerebellum'>
+</div>
+<div class='network-block'>
+<h2>DAN</h2>
+<div class='subtitle'>MSDL components used:</div>
+<ul>
+<li>L IPS</li>
+<li>R IPS</li>
+<li>L Ant IPS</li>
+<li>R Ant IPS</li>
+</ul>
+<img src='msdl_network_rois/DAN.png' alt='ROI: DAN'>
+</div>
+<div class='network-block'>
+<h2>DMN</h2>
+<div class='subtitle'>MSDL components used:</div>
+<ul>
+<li>L DMN</li>
+<li>Med DMN</li>
+<li>Front DMN</li>
+<li>R DMN</li>
+</ul>
+<img src='msdl_network_rois/DMN.png' alt='ROI: DMN'>
+</div>
+<div class='network-block'>
+<h2>FPN</h2>
+<div class='subtitle'>MSDL components used:</div>
+<ul>
+<li>L DLPFC</li>
+<li>R DLPFC</li>
+<li>L Front pol</li>
+<li>R Front pol</li>
+</ul>
+<img src='msdl_network_rois/FPN.png' alt='ROI: FPN'>
+</div>
+<div class='network-block'>
+<h2>Language</h2>
+<div class='subtitle'>MSDL components used:</div>
+<ul>
+<li>Broca</li>
+<li>L STS</li>
+<li>R STS</li>
+<li>L TPJ</li>
+<li>R TPJ</li>
+</ul>
+<img src='msdl_network_rois/Language.png' alt='ROI: Language'>
+</div>
+<div class='network-block'>
+<h2>SMN</h2>
+<div class='subtitle'>MSDL components used:</div>
+<ul>
+<li>Motor</li>
+</ul>
+<img src='msdl_network_rois/SMN.png' alt='ROI: SMN'>
+</div>
+<div class='network-block'>
+<h2>Salience</h2>
+<div class='subtitle'>MSDL components used:</div>
+<ul>
+<li>D ACC</li>
+<li>R A Ins</li>
+<li>L Ins</li>
+<li>R Ins</li>
+<li>Cing</li>
+</ul>
+<img src='msdl_network_rois/Salience.png' alt='ROI: Salience'>
+</div>
+<div class='network-block'>
+<h2>Visual</h2>
+<div class='subtitle'>MSDL components used:</div>
+<ul>
+<li>Striate</li>
+<li>Vis</li>
+<li>L LOC</li>
+<li>R LOC</li>
+<li>Occ post</li>
+</ul>
+<img src='msdl_network_rois/Visual.png' alt='ROI: Visual'>
+</div>
+
+<hr>
+<p><strong>Note:</strong> All ROIs are in MNI space. Thresholding at 50% overlap was applied before binarization. These masks are now ready for use in seed-based connectivity analyses.</p>
+</body>
+</html>

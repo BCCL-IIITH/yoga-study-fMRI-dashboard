@@ -1,0 +1,17 @@
+
+<html><head><style>
+body { font-family: Arial; padding: 30px; max-width: 1100px; margin: auto; }
+h1 { color: #2c3e50; }
+h2 { color: #1abc9c; margin-top: 40px; }
+table { border-collapse: collapse; width: 100%; margin-bottom: 40px; }
+th, td { padding: 10px; border: 1px solid #ccc; text-align: center; }
+img { max-width: 200px; border-radius: 6px; }
+.row-pass { background-color: #e7f7ed; }
+.row-fail { background-color: #f0f0f0; }
+.row-relaxed { background-color: #fff9e6; }
+</style></head><body>
+<a class="button" href="index.html" style="float:right">← Home</a>
+<h1>🧠 GLM Group × Time Report</h1>
+<h2>Summary Table</h2>
+<table><tr><th>Network</th><th>Mean Z</th><th>Max Z</th><th>Threshold</th><th>Relaxed?</th><th>Significant?</th><th>Peak Z</th><th>MNI (x,y,z)</th><th>Map</th></tr>
+<tr class='row-pass'><td><b>Cerebellum</b></td><td>0.198</td><td>3.24</td><td>3.09</td><td>No</td><td>✅ Yes</td><td>-74.5</td><td>15, -46, -74</td><td><img src='second_level_results/Cerebellum_statmap.png' alt='zmap'></td></tr><tr class='row-pass'><td><b>DAN</b></td><td>0.368</td><td>3.119</td><td>3.09</td><td>No</td><td>✅ Yes</td><td>-24.5</td><td>13, 43, -24</td><td><img src='second_level_results/DAN_statmap.png' alt='zmap'></td></tr><tr class='row-pass'><td><b>DMN</b></td><td>0.063</td><td>3.34</td><td>3.09</td><td>No</td><td>✅ Yes</td><td>29.5</td><td>-22, -30, 29</td><td><img src='second_level_results/DMN_statmap.png' alt='zmap'></td></tr><tr class='row-relaxed'><td><b>FPN</b></td><td>0.094</td><td>2.98</td><td>2.98</td><td>Yes</td><td>❌ No</td><td>-</td><td>-</td><td><img src='second_level_results/FPN_statmap.png' alt='zmap'></td></tr><tr class='row-relaxed'><td><b>Language</b></td><td>0.325</td><td>2.758</td><td>2.76</td><td>Yes</td><td>❌ No</td><td>-</td><td>-</td><td><img src='second_level_results/Language_statmap.png' alt='zmap'></td></tr><tr class='row-relaxed'><td><b>SMN</b></td><td>0.299</td><td>2.92</td><td>2.92</td><td>Yes</td><td>❌ No</td><td>-</td><td>-</td><td><img src='second_level_results/SMN_statmap.png' alt='zmap'></td></tr><tr class='row-pass'><td><b>Salience</b></td><td>0.24</td><td>3.139</td><td>3.09</td><td>No</td><td>✅ Yes</td><td>-30.5</td><td>5, -68, -30</td><td><img src='second_level_results/Salience_statmap.png' alt='zmap'></td></tr><tr class='row-pass'><td><b>Visual</b></td><td>0.54</td><td>3.177</td><td>3.09</td><td>No</td><td>✅ Yes</td><td>11.5</td><td>-24, 25, 11</td><td><img src='second_level_results/Visual_statmap.png' alt='zmap'></td></tr></table></body></html>
