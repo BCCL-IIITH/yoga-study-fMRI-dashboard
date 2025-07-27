@@ -1,0 +1,9 @@
+network,zmap_file,thresholded_file,threshold_used,threshold_relaxed,n_subjects,mean_z,max_z,is_significant
+Cerebellum,Cerebellum_zmap.nii.gz,Cerebellum_thresholded_z3.09.nii.gz,3.09,False,86,0.198,3.24,✅ Yes
+DAN,DAN_zmap.nii.gz,DAN_thresholded_z3.09.nii.gz,3.09,False,86,0.368,3.119,✅ Yes
+DMN,DMN_zmap.nii.gz,DMN_thresholded_z3.09.nii.gz,3.09,False,86,0.063,3.34,✅ Yes
+FPN,FPN_zmap.nii.gz,FPN_thresholded_z2.98.nii.gz,2.98,True,86,0.094,2.98,❌ No
+Language,Language_zmap.nii.gz,Language_thresholded_z2.76.nii.gz,2.76,True,86,0.325,2.758,❌ No
+SMN,SMN_zmap.nii.gz,SMN_thresholded_z2.92.nii.gz,2.92,True,86,0.299,2.92,❌ No
+Salience,Salience_zmap.nii.gz,Salience_thresholded_z3.09.nii.gz,3.09,False,86,0.24,3.139,✅ Yes
+Visual,Visual_zmap.nii.gz,Visual_thresholded_z3.09.nii.gz,3.09,False,86,0.54,3.177,✅ Yes
